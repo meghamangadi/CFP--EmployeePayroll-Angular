@@ -1,5 +1,5 @@
 .form-content {
-    min-height: cal(100%-80px);
+    min-height:min-content;
     background-color: rgba(245, 244, 244, 0.925);
     display: flex;
     justify-content: center;
@@ -35,7 +35,7 @@
 }
 
 label {
-    padding: 12px 12px 12px 0px;
+    padding: 12px 12px 12px 0;
     display: inline-block;
 }
 
@@ -47,32 +47,28 @@ label {
     margin-right: 15px;
 }
 
-.input {
+.example-full-width {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
-}
+  }
 
-.profile-radio-content {
+  .profile-radio-content {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
 }
-
+  
 .profile-radio-content>label {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    margin-right: 10px;
+    align-items:center;
 }
-
+  
 .profile {
     width: 40px;
     border-radius: 50%;
     margin-left: 12px;
+    margin-right: 15px;
 }
+
 
 select {
     padding: 12px;
@@ -143,6 +139,7 @@ a.button:hover {
     color: white;
 }
 
-.department {
-    margin-left: 30px;
+.checkbox {
+    flex-direction: row;
+    margin-right: 10px;
 }
