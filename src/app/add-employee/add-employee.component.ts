@@ -11,16 +11,7 @@ export class AddEmployeeComponent implements OnInit {
   employeeFormGroup: FormGroup;
  
   employee:any={};
-
- /*  constructor(private formBuilder: FormBuilder) { 
-    this.employeeFormGroup = this.formBuilder.group({
-      empName: new FormControl('', [ Validators.required, Validators.pattern("^[A-Z][a-zA-z\\s]{2,}$")]),
-      profilePic: new FormControl('', Validators.required),
-      empGender: new FormControl('', Validators.required),
-      department: this.formBuilder.array([], Validators.required),    
-      note: new FormControl('', Validators.required),
-    })
-  } */
+ 
   constructor(private fb: FormBuilder) {}
   ngOnInit(){
     this.createEmployeeDetails();
@@ -29,8 +20,7 @@ export class AddEmployeeComponent implements OnInit {
     this.employeeFormGroup=this.fb.group({
       empName: [null,Validators.required],
       profilePic: [null,Validators.required],
-      empGender: [null,Validators.required],
-        
+      empGender: [null,Validators.required],        
       note: [null,Validators.required],
       empSalary:[null,Validators.required]
     })
@@ -47,12 +37,29 @@ export class AddEmployeeComponent implements OnInit {
     return value;
   }
 
-  
-
   onSubmit() {
-    console.log(this.employeeFormGroup.value);
-    //this.employee=Object.assign(this.employee,this.employeeFormGroup);
-    localStorage.setItem('EmployeeDetails',JSON.stringify(this.employeeFormGroup.value));
+    console.log(this.employeeFormGroup.value);      
+    this.employee= Object.assign(this.employee,this.employeeFormGroup.value);
+    this.addMultipleEmployee( this.employee); 
+    this.employeeFormGroup.reset();
+  }
+  addMultipleEmployee(employee){
+    let emp=[];
+    if(localStorage.getItem('EmployeeDetails')){
+
+      emp=JSON.parse(localStorage.getItem('EmployeeDetails'))
+      emp=[employee,...emp];
+    }else{
+
+      employee=[employee];
+    }
+    localStorage.setItem('EmployeeDetails',JSON.stringify(emp));
+  }
+ 
+  onDelete(){
+
+    localStorage.removeItem('EmployeeDetails');
+    
   }
   
   public checkError = (controlName: string, errorName: string) => {
