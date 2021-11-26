@@ -1,5 +1,5 @@
 .form-content {
-    min-height:min-content;
+    min-height: min-content;
     background-color: rgba(245, 244, 244, 0.925);
     display: flex;
     justify-content: center;
@@ -32,6 +32,7 @@
 
 .label {
     min-width: 140px;
+    margin-bottom: 20px;
 }
 
 label {
@@ -45,23 +46,24 @@ label {
     opacity: 1;
     font-family: Roboto;
     margin-right: 15px;
+    margin-bottom: 50px;
 }
 
 .example-full-width {
     width: 100%;
-  }
+}
 
-  .profile-radio-content {
+.profile-radio-content {
     display: flex;
     flex-direction: row;
 }
-  
+
 .profile-radio-content>label {
     display: flex;
     flex-direction: row;
-    align-items:center;
+    align-items: center;
 }
-  
+
 .profile {
     width: 40px;
     border-radius: 50%;
@@ -69,6 +71,9 @@ label {
     margin-right: 15px;
 }
 
+.salary-input {
+    width: 500px;
+}
 
 select {
     padding: 12px;
@@ -115,18 +120,7 @@ select {
 }
 
 .resetButton {
-    margin-right: 10px;
-}
-
-error-output {
-    font-size: 15px;
-    font-style: italic;
-    color: rgb(231, 66, 66);
-}
-
-a.button:hover {
-    background: grey;
-    color: white;
+    margin-right: 1px;
 }
 
 .submitButton:hover {
@@ -139,7 +133,7 @@ a.button:hover {
     color: white;
 }
 
-.checkbox {
-    flex-direction: row;
-    margin-right: 10px;
+.cancelButton:hover {
+    background: red;
+    color: white;
 }

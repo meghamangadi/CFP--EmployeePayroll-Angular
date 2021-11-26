@@ -3,7 +3,6 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border: 0px solid green;
 }
 
 .emp-detail-text {
@@ -12,6 +11,17 @@
     color: #42515f;
     opacity: 1;
     width: 63%;
+    border: 10px;
+}
+
+.emp-count {
+    background-color: #82a70c;
+    color: #ffffff;
+    border-radius: 42%;
+    font-size: 16px;
+    width: 26px;
+    text-align: center;
+    display: inline-block;
 }
 
 .main-content {
@@ -35,6 +45,7 @@
     outline: none;
     cursor: pointer;
     text-decoration: none;
+    border: 25px;
 }
 
 .plus-icon {
@@ -46,6 +57,7 @@
     width: 80%;
     margin: 0 auto;
     overflow: auto;
+    border: 15px;
 }
 
 .table {
@@ -110,7 +122,3 @@ td img {
     font-weight: 300;
     margin-bottom: 8px;
 }
-table {
-    width: 100%;
-  }
-  

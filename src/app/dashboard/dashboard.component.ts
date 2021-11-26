@@ -1,33 +1,49 @@
-import { variable } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { AddEmployeeComponent } from '../add-employee/add-employee.component';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  employeepayrollList: any;
+  employeeCount: number = 10;
+
+  constructor(public dialog: MatDialog) { }
+
+
  
-  constructor() { }
-   
   ngOnInit(): void {
-    this.getEmployeeData();
+    this.employeepayrollList = localStorage.getItem('EmployeePayrollList') ?
+      JSON.parse(localStorage.getItem('EmployeePayrollList')) : [];
+    this.employeeCount = this.employeepayrollList.length;
+
   }
-  empData:any={};
-   employeList=[];
- getEmployeeData(){
-  var empDatass=JSON.parse(localStorage.getItem('EmployeeDetails'));   
-  this.empData=empDatass;
-  
- }
- onDelete(id){
-   console.log(id);  
-    let result:any=this.empData.slice(id);
-    localStorage.setItem('EmployeeDetails',JSON.stringify(result));
-    this.getEmployeeData();
- }
+
  
- 
-  
-   
+  remove(i: number) {
+    console.log(i);
+    console.log(this.employeepayrollList);
+    if (this.employeepayrollList !== null) {
+      const empList = this.employeepayrollList;
+      empList.splice(i, 1);
+      localStorage.setItem('EmployeePayrollList', JSON.stringify(empList));
+      this.employeeCount = this.employeepayrollList.length;
+    }
+    this.ngOnInit();
+  }
+
+
+  update(i: number) {
+    const dialogRef = this.dialog.open(AddEmployeeComponent, {
+      data: i
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      this.ngOnInit();
+    })
+  }
+
 }
